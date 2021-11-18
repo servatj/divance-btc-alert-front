@@ -1,82 +1,64 @@
-import Head from 'next/head'
+import React, { useState, useEffect } from 'react';
+import Chart from "../components/Chart";
+import Image from 'next/image'
+import Head from "next/head";
+import rocket from '../public/rocket.png'
 
 export default function Home() {
+  const [data, setData] = useState([]);
+  const [ath, setAth] = useState(0);
+
+  function handleSignInEmailFieldChange(event) {
+    event.preventDefault();
+    setSignInEmail(event.target.value);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`https://api.coindesk.com/v1/bpi/historical/close.json`);
+      const response = await result.json();
+      const data = await Object.keys(response.bpi).map(date => {
+        return {
+           date: new Date(date),
+           price: response.bpi[date]
+          };
+       })
+      setData(data);
+    };
+
+    const fetchAth = async () => {
+      const result = await fetch(`https://api.divance.app/ath`);
+      const response = await result.json();
+      setAth(response.rows._max.high)
+    };
+
+    fetchData();
+    fetchAth();
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-purple-600">
       <Head>
-        <title>Create Next App</title>
+        <title>BTC Alert</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="font-Nunito text-9xl text-white"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
+        <Image
+          src={rocket}
+          alt="Rocket goin to the moon"
+          width={200}
+          height={300}
+        />
+        <a href="https://t.me/joinchat/VolLOSw72LkxMDRk" className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
+          <span className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0"></span>
+          <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
+          <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
+          <span className="relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">Join Telegram Alert</span>
         </a>
-      </footer>
+        <Chart data={data} />
+      </div>
     </div>
-  )
+  );
 }
