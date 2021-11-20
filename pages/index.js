@@ -44,14 +44,14 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="font-Nunito text-9xl text-white"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
+        <h1 className="font-Nunito text-9xl text-white text-center sm:text-left"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
         <Image
           src={rocket}
           alt="Rocket goin to the moon"
           width={200}
           height={300}
         />
-        <a href="https://t.me/joinchat/VolLOSw72LkxMDRk" className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
+        <a href="https://t.me/divanceath" className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group">
           <span className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0"></span>
           <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
           <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
