@@ -82,9 +82,7 @@ export default function Home() {
             <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
             <span className="relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
-              <span class="flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-              </span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
               Join Telegram Alert
             </span>
           </a>
