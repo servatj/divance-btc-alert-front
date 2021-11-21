@@ -31,13 +31,15 @@ export default function Home() {
     };
 
     const getCurrentPrice = async (token) => {
-      const result = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${token}&vs_currencies=usd`);
+      const result = await fetch(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${token}&vs_currencies=usd`
+      );
       const response = await result.json();
 
-      const price = response[token].usd
-      console.log((currentPrice / ath) * 100)
+      const price = response[token].usd;
+      console.log((currentPrice / ath) * 100);
       setCurrentPrice(price);
-    }
+    };
 
     const fetchAth = async () => {
       const result = await fetch(`https://api.divance.app/ath`);
@@ -48,7 +50,7 @@ export default function Home() {
 
     fetchData();
     fetchAth();
-    getCurrentPrice('bitcoin');
+    getCurrentPrice("bitcoin");
   }, []);
 
   return (
@@ -80,6 +82,9 @@ export default function Home() {
             <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
             <span className="relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
+              <span class="flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+              </span>
               Join Telegram Alert
             </span>
           </a>
@@ -88,12 +93,12 @@ export default function Home() {
         <div className="bg-black p-6 rounded-lg shadow-lg">
           <div className="relative pt-1">
             <h2 className="text-1xl font-bold mb-2 text-white">
-              Drop From ATH { parseInt(100 - ((currentPrice / ath) * 100))} %
+              Drop From ATH {parseInt(100 - (currentPrice / ath) * 100)} %
             </h2>
 
             <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
               <div
-                style={{ width: `${ parseInt(((currentPrice / ath) * 100))}%` }}
+                style={{ width: `${parseInt((currentPrice / ath) * 100)}%` }}
                 className="
                   shadow-none
                   flex flex-col
@@ -111,28 +116,49 @@ export default function Home() {
               Current Price
             </h2>
             <div className="bg-purple-600 p-6 rounded-lg shadow-lg items-center text-center">
-              <p className="text-white text-2xl">{currentPrice.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD</p>
+              <p className="text-white text-2xl">
+                {currentPrice.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                USD
+              </p>
             </div>
           </div>
         </div>
 
         <div className="relative py-9">
           <div className="flex items-center justify-center space-x-3">
-            <a href="https://www.instagram.com/divance_community/" className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
-              <img src="https://img.icons8.com/small/40/000000/instagram-new.png"/>
+            <a
+              href="https://www.instagram.com/divance_community/"
+              className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+            >
+              <img src="https://img.icons8.com/small/40/000000/instagram-new.png" />
             </a>
-            <a href="https://twitter.com/divance7" className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
-              <img src="https://img.icons8.com/material/40/000000/twitter--v1.png"/>
+            <a
+              href="https://twitter.com/divance7"
+              className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+            >
+              <img src="https://img.icons8.com/material/40/000000/twitter--v1.png" />
             </a>
-            <a href="https://discord.gg/AwrM7xYkvF" className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
-              <img src="https://img.icons8.com/ios-glyphs/40/000000/discord-logo.png"/>
+            <a
+              href="https://discord.gg/AwrM7xYkvF"
+              className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+            >
+              <img src="https://img.icons8.com/ios-glyphs/40/000000/discord-logo.png" />
             </a>
-            <a href="https://github.com/divance-cryptos" className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
-              <img src="https://img.icons8.com/ios-glyphs/40/000000/github.png"/>
+            <a
+              href="https://github.com/divance-cryptos"
+              className="bg-purple-600 px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+            >
+              <img src="https://img.icons8.com/ios-glyphs/40/000000/github.png" />
             </a>
           </div>
           <div className="flex items-center justify-center space-x-3">
-            <p className="text-1xl text-white"> --> powered by Divance http://divance.app </p>
+            <p className="text-1xl text-white">
+              {" "}
+              --> powered by Divance http://divance.app{" "}
+            </p>
           </div>
         </div>
 
