@@ -93,7 +93,6 @@ export default function Home() {
             <h2 className="text-1xl font-bold mb-2 text-white">
               Drop From ATH {parseInt(100 - (currentPrice / ath) * 100)} %
             </h2>
-
             <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
               <div
                 style={{ width: `${parseInt((currentPrice / ath) * 100)}%` }}
