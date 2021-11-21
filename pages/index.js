@@ -46,8 +46,8 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="font-Nunito text-9xl text-white text-center sm:text-left"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
-        <h2 className="font-Nunito text-2xl text-white text-center sm:text-left">{new Date(athDate).toDateString()}</h2>
+        <h1 className="font-Nunito text-6xl text-white text-center sm:text-left sm:text-9xl"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
+        <h2 className="font-Nunito text-2xl text-white text-center sm:text-left ">{new Date(athDate).toDateString()}</h2>
         <Image
           src={rocket}
           alt="Rocket goin to the moon"
