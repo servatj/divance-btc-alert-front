@@ -7,6 +7,7 @@ import rocket from '../public/rocket.png'
 export default function Home() {
   const [data, setData] = useState([]);
   const [ath, setAth] = useState(0);
+  const [athDate, setAthDate] = useState('');
 
   function handleSignInEmailFieldChange(event) {
     event.preventDefault();
@@ -29,7 +30,8 @@ export default function Home() {
     const fetchAth = async () => {
       const result = await fetch(`https://api.divance.app/ath`);
       const response = await result.json();
-      setAth(response.rows._max.high)
+      setAth(response.rows.high)
+      setAthDate(response.rows.price_date)
     };
 
     fetchData();
@@ -45,6 +47,7 @@ export default function Home() {
 
       <div className="flex flex-col items-center justify-center h-screen">
         <h1 className="font-Nunito text-9xl text-white text-center sm:text-left"><span className="text-yellow-400">₿</span> ATH ${ath}</h1>
+        <h2 className="font-Nunito text-2xl text-white text-center sm:text-left">{new Date(athDate).toDateString()}</h2>
         <Image
           src={rocket}
           alt="Rocket goin to the moon"
@@ -57,7 +60,7 @@ export default function Home() {
           <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
           <span className="relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">Join Telegram Alert</span>
         </a>
-        <Chart data={data} />
+        {/* <Chart data={data} /> */}
       </div>
     </div>
   );
