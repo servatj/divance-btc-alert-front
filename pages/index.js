@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Chart from "../components/Chart";
+import AthDisplay from "../components/AthDisplay";
 import Image from "next/image";
 import Head from "next/head";
 import rocket from "../public/rocket.png";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [ath, setAth] = useState(0);
-  const [currentPrice, setCurrentPrice] = useState(0);
+  const [pairRows, setPairRows] = useState([]);
   const [athDate, setAthDate] = useState("");
 
   function handleSignInEmailFieldChange(event) {
@@ -30,42 +29,31 @@ export default function Home() {
       setData(data);
     };
 
-    const getCurrentPrice = async (token) => {
-      const result = await fetch(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${token}&vs_currencies=usd`
-      );
-      const response = await result.json();
-
-      const price = response[token].usd;
-      console.log((currentPrice / ath) * 100);
-      setCurrentPrice(price);
-    };
-
     const fetchAth = async () => {
-      const result = await fetch(`https://api.divance.app/ath`);
+      const result = await fetch(`${process.env.API_URL || 'http://localhost:4000'}/ath`);
       const response = await result.json();
-      setAth(response.rows.high);
-      setAthDate(response.rows.price_date);
+      console.log(response)
+      setPairRows(response.rows);
+      // setAthDate(response.rows.price_date);
     };
 
     fetchData();
     fetchAth();
-    getCurrentPrice("bitcoin");
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-purple-600">
       <Head>
-        <title>BTC Alert</title>
+        <title>ATH Alert</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col items-center justify-center h-screen">
         <h1 className="font-Nunito text-6xl text-white text-center sm:text-left sm:text-9xl">
-          <span className="text-yellow-400">₿</span> ATH ${ath}
+          <span className="text-yellow-400">Coin</span> ATH
         </h1>
         <h2 className="font-Nunito text-2xl text-white text-center sm:text-left ">
-          {new Date(athDate).toDateString()}
+          NEVER MISS AN ATH !
         </h2>
         <Image
           src={rocket}
@@ -88,40 +76,11 @@ export default function Home() {
           </a>
         </section>
 
-        <div className="bg-black p-6 rounded-lg shadow-lg">
-          <div className="relative pt-1">
-            <h2 className="text-1xl font-bold mb-2 text-white">
-              Drop From ATH {parseInt(100 - (currentPrice / ath) * 100)} %
-            </h2>
-            <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
-              <div
-                style={{ width: `${parseInt((currentPrice / ath) * 100)}%` }}
-                className="
-                  shadow-none
-                  flex flex-col
-                  text-center
-                  whitespace-nowrap
-                  text-white
-                  justify-center
-                  bg-purple-500
-                "
-              ></div>
-            </div>
-          </div>
-          <div className="relative py-3">
-            <h2 className="text-2xl font-bold mb-2 text-white">
-              Current Price
-            </h2>
-            <div className="bg-purple-600 p-6 rounded-lg shadow-lg items-center text-center">
-              <p className="text-white text-2xl">
-                {currentPrice.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}{" "}
-                USD
-              </p>
-            </div>
-          </div>
+        <div className="flex flex-row items-center justify-center flex-wrap">
+          {pairRows.map((currentPair) => {
+            console.log(currentPair)
+            return <AthDisplay currentPair={currentPair} logo={'bitcoin.png'}/>
+          })}
         </div>
 
         <div className="relative py-9">
