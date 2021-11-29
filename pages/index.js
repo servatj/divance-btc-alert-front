@@ -42,7 +42,7 @@ export default function Home() {
     fetchAth();
   }, []);
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-purple-600">
+    <div className="flex flex-col items-center justify-center py-10 bg-purple-600">
       <Head>
         <title>ATH Alert</title>
         <link rel="icon" href="/favicon.ico" />
@@ -55,12 +55,7 @@ export default function Home() {
         <h2 className="font-Nunito text-2xl text-white text-center sm:text-left ">
           NEVER MISS AN ATH !
         </h2>
-        <Image
-          src={rocket}
-          alt="Rocket goin to the moon"
-          width={200}
-          height={300}
-        />
+        <p className="font-Nunito text-6xl text-white text-center sm:text-left sm:text-9xl">🚀</p>
         <section className="py-4">
           <a
             href="https://t.me/divanceath"
