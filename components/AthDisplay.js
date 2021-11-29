@@ -28,9 +28,12 @@ const athDisplay = ({ currentPair, logo }) => {
     <div class="p-3">
       <div className="bg-black p-6 rounded-lg shadow-lg">
         <div className="relative pt-1">
-           <h2 className="text-1xl font-bold mb-2 text-white">
-            ATH {currentPair.high}
-          </h2>
+           <h1 className="text-2xl font-bold mb-2 text-white">
+            ATH 💲{currentPair.high}
+          </h1>
+          <h1 className="text-1xl font-bold mb-2 text-white">
+            🗓️ DATE  {new Date(currentPair.price_date).toDateString()}
+          </h1>
           <h2 className="text-1xl font-bold mb-2 text-white">
             Drop From ATH {parseInt(100 - (currentPrice / currentPair.high) * 100)} %
           </h2>
