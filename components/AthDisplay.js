@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const athDisplay = ({ currentPair, logo }) => {
 
   const mapPair = {
-    'EUR/USDT': 'ethereum',
+    'ETH/USDT': 'ethereum',
     'BTC/USDT': 'bitcoin'
   }
 
