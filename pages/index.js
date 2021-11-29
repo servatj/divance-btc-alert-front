@@ -30,7 +30,8 @@ export default function Home() {
     };
 
     const fetchAth = async () => {
-      const result = await fetch(`${process.env.API_URL || 'http://localhost:4000'}/ath`);
+      console.log(process.env.API_URL)
+      const result = await fetch(`https://api.divance.app/ath`);
       const response = await result.json();
       console.log(response)
       setPairRows(response.rows);
@@ -40,7 +41,6 @@ export default function Home() {
     fetchData();
     fetchAth();
   }, []);
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-purple-600">
       <Head>
