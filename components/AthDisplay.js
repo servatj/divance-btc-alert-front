@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import calc from '../lib/calc'
 
 
 const athDisplay = ({ currentPair, logo }) => {
@@ -26,7 +27,7 @@ const athDisplay = ({ currentPair, logo }) => {
   }, []);
 
   return (
-    <div class="p-3">
+    <div className="p-3">
       <div className="bg-black p-6 rounded-lg shadow-lg">
         <div className="relative pt-1">
            <h1 className="text-2xl font-bold mb-2 text-white">
@@ -36,11 +37,11 @@ const athDisplay = ({ currentPair, logo }) => {
             🗓️ DATE  {new Date(currentPair.price_date).toDateString()}
           </h1>
           <h2 className="text-1xl font-bold mb-2 text-white">
-            Drop From ATH{parseInt(100 - (currentPrice / currentPair.high) * 100)} %
+            Drop From ATH{calc.getDrop(currentPrice, currentPair.high)} %
           </h2>
           <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
             <div
-              style={{ width: `${parseInt((currentPrice / currentPair.high) * 100)}%` }}
+              style={{ width: `${calc.getDropBar(currentPrice, currentPair.high)}%` }}
               className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
             ></div>
           </div>

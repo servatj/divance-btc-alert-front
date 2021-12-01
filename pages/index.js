@@ -69,9 +69,8 @@ export default function Home() {
         </section>
 
         <div className="flex flex-row items-center justify-center flex-wrap">
-          {pairRows.map((currentPair) => {
-            console.log(currentPair)
-            return <AthDisplay currentPair={currentPair} logo={'bitcoin.png'}/>
+          {pairRows.map((currentPair, index) => {
+            return <AthDisplay key={index} currentPair={currentPair} logo={'bitcoin.png'}/>
           })}
         </div>
 
