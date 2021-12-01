@@ -30,13 +30,13 @@ const athDisplay = ({ currentPair, logo }) => {
       <div className="bg-black p-6 rounded-lg shadow-lg">
         <div className="relative pt-1">
            <h1 className="text-2xl font-bold mb-2 text-white">
-            ATH 💲{currentPair.high}
+           <span className="text-yellow-400">ATH</span>  💲{currentPair.high}
           </h1>
           <h1 className="text-1xl font-bold mb-2 text-white">
             🗓️ DATE  {new Date(currentPair.price_date).toDateString()}
           </h1>
           <h2 className="text-1xl font-bold mb-2 text-white">
-            Drop From ATH {parseInt(100 - (currentPrice / currentPair.high) * 100)} %
+            Drop From ATH{parseInt(100 - (currentPrice / currentPair.high) * 100)} %
           </h2>
           <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
             <div
@@ -46,8 +46,9 @@ const athDisplay = ({ currentPair, logo }) => {
           </div>
         </div>
         <div className="relative py-3">
-          <div className="flex"><h2 className="text-2xl font-bold mb-2 text-white">Current Price</h2><img src={`${mapPair[currentPair.symbol]}.png`} className="px-4 h-8"/></div>
+          <div className="flex"><h2 className="text-2xl font-bold mb-2 text-white">{currentPair.symbol}</h2><img src={`${mapPair[currentPair.symbol]}.png`} className="px-4 h-8"/></div>
           <div className="bg-purple-600 p-6 rounded-lg shadow-lg items-center text-center">
+            <p>current price</p>
             <p className="text-white text-2xl">
               {currentPrice.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
