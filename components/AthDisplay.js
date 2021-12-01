@@ -5,7 +5,8 @@ const athDisplay = ({ currentPair, logo }) => {
 
   const mapPair = {
     'ETH/USDT': 'ethereum',
-    'BTC/USDT': 'bitcoin'
+    'BTC/USDT': 'bitcoin',
+    'ZIG/USDT': 'zignaly'
   }
 
   const [currentPrice, setCurrentPrice] = useState(0);
