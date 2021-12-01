@@ -39,7 +39,7 @@ export default function Home() {
     fetchAth();
   }, []);
   return (
-    <div className="flex flex-col items-center justify-center py-10 bg-purple-600">
+    <div className="flex flex-col items-center justify-center sm:h-screen py-10 bg-purple-600">
       <Head>
         <title>ATH Alert</title>
         <link rel="icon" href="/favicon.ico" />
