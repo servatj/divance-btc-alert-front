@@ -30,12 +30,9 @@ export default function Home() {
     };
 
     const fetchAth = async () => {
-      console.log(process.env.API_URL)
       const result = await fetch(`https://api.divance.app/ath`);
       const response = await result.json();
-      console.log(response)
       setPairRows(response.rows);
-      // setAthDate(response.rows.price_date);
     };
 
     fetchData();
@@ -48,7 +45,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center">
         <h1 className="font-Nunito text-6xl text-white text-center sm:text-left sm:text-9xl">
           <span className="text-yellow-400">Coin</span> ATH
         </h1>
