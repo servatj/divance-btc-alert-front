@@ -13,6 +13,7 @@ const athDisplay = ({ currentPair, logo }) => {
   }
 
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [pairToken, setPairToken] = useState('');
 
   useEffect(() => {
     const getCurrentPrice = async (token) => {
@@ -20,16 +21,17 @@ const athDisplay = ({ currentPair, logo }) => {
         `https://api.coingecko.com/api/v3/simple/price?ids=${token}&vs_currencies=usd`
       );
       const response = await result.json();
-
       const price = response[token].usd;
       setCurrentPrice(price);
+      setPairToken(token)
     };
 
     getCurrentPrice(mapPair[currentPair.symbol]);
   }, []);
 
   return (
-    <div className="p-3">
+    <div className="p-3 transform transition duration-500 hover:scale-110 cursor-pointer">
+      <a href={`/pair/${pairToken}`}>
       <div className="bg-black p-6 rounded-lg shadow-lg">
         <div className="relative pt-1">
            <h1 className="text-2xl font-bold mb-2 text-white">
@@ -62,6 +64,7 @@ const athDisplay = ({ currentPair, logo }) => {
           </div>
         </div>
       </div>
+      </a>
     </div>
     );
 };
