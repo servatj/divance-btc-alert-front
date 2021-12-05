@@ -22,11 +22,11 @@ const getChartColors = (isChangePositive) => {
 };
 
 export default function PostPage() {
-  const demoUrl = "https://codesandbox.io/s/simple-line-chart-kec3v";
   const colors = getChartColors(true);
   const router = useRouter();
 
   const [data, setData] = useState(0);
+  const [currentPrice, setCurrentPrice] = useState(0);
 
   useEffect(() => {
     const getCurrentPrice = async (MARKET_CHART_ID) => {
@@ -37,6 +37,9 @@ export default function PostPage() {
         const { prices } = await result.json();
         const priceGroup = prices.reverse().map((price, index) => {
           const [, value] = price;
+          if (index === 0) {
+            setCurrentPrice(value.toFixed(2));
+          }
           const hour = DateTime.now().plus({ hours: -index }).hour;
           return {
             name: DateTime.fromISO(
@@ -53,8 +56,11 @@ export default function PostPage() {
 
   return (
     <div className="flex ui-chart flex-col items-center justify-center h-screen py-10 bg-purple-600">
-      <div>Pair #{router.query.pair}</div>
-      <div className="flex flex-col items-center justify-center w-6/12 h-1/4 bg-gray-800">
+      <div className="flex flex-col items-center justify-center w-8/12 h-2/4 bg-gray-800">
+        <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
+          <span className="text-white text-4xl p-2">{currentPrice}</span>
+          {router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT{" "}
+        </div>
         <ResponsiveContainer className="bg-gray-800 w-full h-1">
           <AreaChart
             height={100}
@@ -69,11 +75,7 @@ export default function PostPage() {
             <defs>
               <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={"#fff"} stopOpacity={0.34} />
-                <stop
-                  offset="100%"
-                  stopColor={colors.gradient2}
-                  stopOpacity={0.12}
-                />
+                <stop offset="100%" stopColor={"#A78BFA"} stopOpacity={0} />
               </linearGradient>
             </defs>
             <XAxis
@@ -96,8 +98,8 @@ export default function PostPage() {
             <Area
               type="linear"
               dataKey="uv"
-              stroke="#8884d8"
-              fill="#8884d8"
+              stroke="#D6A2E8"
+              fill="url(#gradient)"
               strokeWidth={2}
             />
           </AreaChart>
