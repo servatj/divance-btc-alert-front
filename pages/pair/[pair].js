@@ -55,11 +55,14 @@ export default function PostPage() {
   }, [router.query.pair]);
 
   return (
-    <div className="flex ui-chart flex-col items-center justify-center h-screen py-10 bg-purple-600">
-      <div className="flex flex-col items-center justify-center w-8/12 h-2/4 bg-gray-800">
+    <div className="flex flex-col items-center h-screen py-10 bg-purple-600">
+      <div className="flex flex-wrap py-5 bg-purple-600">
+        <p className= "px-2 text-2xl font-bold"><a href="/" className="text-white px-2 text-2xl font-semibold">home</a>/ {router.query.pair}</p>
+      </div>
+      <div className="flex flex-col w-8/12 h-2/4 bg-gray-800 ui-chart">
         <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
-          <span className="text-white text-4xl p-2">{currentPrice}</span>
-          {router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT{" "}
+          <span className="text-white text-4xl p-2 font-bold">{currentPrice}</span>
+          <span className="m-2 font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </span>
         </div>
         <ResponsiveContainer className="bg-gray-800 w-full h-1">
           <AreaChart

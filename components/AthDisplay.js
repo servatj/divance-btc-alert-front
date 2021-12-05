@@ -53,8 +53,7 @@ const athDisplay = ({ currentPair, logo }) => {
         <div className="relative py-3">
           <div className="flex"><h2 className="text-2xl font-bold mb-2 text-white">{currentPair.symbol}</h2><img src={`${mapPair[currentPair.symbol]}.png`} className="px-4 h-8"/></div>
           <div className="bg-purple-600 p-6 rounded-lg shadow-lg items-center text-center">
-            <p>current price</p>
-            <p className="text-white text-2xl">
+            <p className="text-white text-2xl font-bold">
               {currentPrice.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
