@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { DateTime } from "luxon";
+import Image from 'next/image';
 
 import {
   AreaChart,
@@ -61,8 +62,12 @@ export default function PostPage() {
       </div>
       <div className="flex flex-col w-8/12 h-2/4 bg-gray-800 ui-chart">
         <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
-          <span className="text-white text-4xl p-2 font-bold">{currentPrice}</span>
-          <span className="m-2 font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </span>
+          <div className="flex  align-baseline">
+            <div className="text-white text-4xl font-bold"><h2 className="text-4xl font-bold mb-2 text-white">{currentPrice}</h2></div>
+            <div className="mx-4"> <Image src={`/${router.query.pair}.png`} width="20" height="25"/></div>
+            <div className=" font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </div>
+          </div>
+          <p className="text-purple-200 mx-2">{new Date().toDateString()}</p>
         </div>
         <ResponsiveContainer className="bg-gray-800 w-full h-1">
           <AreaChart
