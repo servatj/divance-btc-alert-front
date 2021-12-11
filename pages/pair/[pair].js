@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { DateTime } from "luxon";
 import Image from 'next/image';
+import Header from '../../components/Header';
 
 import {
   AreaChart,
@@ -56,63 +57,66 @@ export default function PostPage() {
   }, [router.query.pair]);
 
   return (
-    <div className="flex flex-col items-center h-screen py-10 bg-purple-600">
-      <div className="flex flex-wrap py-5 bg-purple-600">
-        <p className= "px-2 text-2xl font-bold"><a href="/" className="text-white px-2 text-2xl font-semibold">home</a>/ {router.query.pair}</p>
-      </div>
-      <div className="flex flex-col w-8/12 h-2/4 bg-gray-800 ui-chart">
-        <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
-          <div className="flex  align-baseline">
-            <div className="text-white text-4xl font-bold"><h2 className="text-4xl font-bold mb-2 text-white">{currentPrice}</h2></div>
-            <div className="mx-4"> <Image src={`/${router.query.pair}.png`} width="20" height="25"/></div>
-            <div className=" font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </div>
-          </div>
-          <p className="text-purple-200 mx-2">{new Date().toDateString()}</p>
+    <>
+      <div className="flex flex-col items-center h-screen bg-purple-600">
+        <Header fixed="true" />
+        <div className="flex flex-wrap py-5 bg-purple-600">
+          <p className= "px-2 text-2xl font-bold"><a href="/" className="text-white px-2 text-2xl font-semibold">home</a>/ {router.query.pair}</p>
         </div>
-        <ResponsiveContainer className="bg-gray-800 w-full h-1">
-          <AreaChart
-            height={100}
-            data={data}
-            margin={{
-              top: 5,
-              right: 0,
-              left: 0,
-              bottom: 5,
-            }}
-          >
-            <defs>
-              <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={"#fff"} stopOpacity={0.34} />
-                <stop offset="100%" stopColor={"#A78BFA"} stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            <XAxis
-              dataKey="name"
-              axisLine={false}
-              tickLine={false}
-              minTickGap={8}
-              // tickFormatter={(time) => time.toLocaleString('en', dateFormatting)}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              domain={["auto", "auto"]}
-              hide
-            />
-            <Tooltip
-              cursor={{ stroke: "#ccc" }}
-              contentStyle={{ display: "none" }}
-            />
-            <Area
-              type="linear"
-              dataKey="uv"
-              stroke="#D6A2E8"
-              fill="url(#gradient)"
-              strokeWidth={2}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+        <div className="flex flex-col w-8/12 h-2/4 bg-gray-800 ui-chart">
+          <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
+            <div className="flex  align-baseline">
+              <div className="text-white text-4xl font-bold"><h2 className="text-4xl font-bold mb-2 text-white">{currentPrice}</h2></div>
+              <div className="mx-4"> <Image src={`/${router.query.pair}.png`} width="20" height="25"/></div>
+              <div className=" font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </div>
+            </div>
+            <p className="text-purple-200 mx-2">{new Date().toDateString()}</p>
+          </div>
+          <ResponsiveContainer className="bg-gray-800 w-full h-1">
+            <AreaChart
+              height={100}
+              data={data}
+              margin={{
+                top: 5,
+                right: 0,
+                left: 0,
+                bottom: 5,
+              }}
+            >
+              <defs>
+                <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor={"#fff"} stopOpacity={0.34} />
+                  <stop offset="100%" stopColor={"#A78BFA"} stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis
+                dataKey="name"
+                axisLine={false}
+                tickLine={false}
+                minTickGap={8}
+                // tickFormatter={(time) => time.toLocaleString('en', dateFormatting)}
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                domain={["auto", "auto"]}
+                hide
+              />
+              <Tooltip
+                cursor={{ stroke: "#ccc" }}
+                contentStyle={{ display: "none" }}
+              />
+              <Area
+                type="linear"
+                dataKey="uv"
+                stroke="#D6A2E8"
+                fill="url(#gradient)"
+                strokeWidth={2}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
