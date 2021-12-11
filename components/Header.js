@@ -2,8 +2,27 @@ import Image from 'next/image';
 import WalletButton from './WalletButton';
 import React from "react";
 
- function Header({ fixed }) {
+import { useWeb3React } from "@web3-react/core";
+import { injected } from "../components/Connectors";
+
+function Header({ fixed }) {
+  const { active, account, library, connector, activate, deactivate } = useWeb3React();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  async function connectLogic() {
+    console.log("connecting", active);
+    try {
+      if(active) {
+        deactivate();
+      } else {
+        console.log('Ativate')
+        await activate(injected);
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-emerald-500 mb-3">
@@ -12,7 +31,7 @@ import React from "react";
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              href="#pablo"
+              href="#"
             >
               Divance
             </a>
@@ -21,7 +40,7 @@ import React from "react";
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
             </button>
           </div>
           <div
@@ -31,7 +50,8 @@ import React from "react";
             }
             id="example-navbar-danger"
           >
-          <WalletButton />
+          {active ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
+          <WalletButton connectLogic={connectLogic} connected={active} />
           </div>
         </div>
       </nav>
