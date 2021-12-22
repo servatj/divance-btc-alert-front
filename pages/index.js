@@ -104,7 +104,7 @@ export default function Home() {
           <div className="flex items-center justify-center space-x-3">
             <p className="text-1xl text-white">
               {" "}
-              --> powered by Divance http://divance.app{" "}
+              --> powered by Divance http://divance.app {" "}
             </p>
           </div>
         </div>

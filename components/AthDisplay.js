@@ -9,7 +9,8 @@ const athDisplay = ({ currentPair, logo }) => {
     'BTC/USDT': 'bitcoin',
     'ZIG/USDT': 'zignaly',
     'LUNA/USDT': 'terra-luna',
-    'ATOM/USDT': 'cosmos'
+    'ATOM/USDT': 'cosmos',
+    'SOLANA/USDT': 'solana',
   }
 
   const [currentPrice, setCurrentPrice] = useState(0);
