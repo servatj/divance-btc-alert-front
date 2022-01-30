@@ -36,7 +36,7 @@ function Header({ fixed }) {
               Divance
             </a>
             <button
-              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              className="text-purple cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
@@ -45,7 +45,7 @@ function Header({ fixed }) {
           </div>
           <div
             className={
-              "lg:flex flex-grow items-center" +
+              "lg:flex flex-grow items-center justify-between" +
               (navbarOpen ? " flex" : " hidden")
             }
             id="example-navbar-danger"
