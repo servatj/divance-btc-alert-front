@@ -4,40 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import rocket from "../public/rocket.png";
 
-export default function Home() {
-  const [data, setData] = useState([]);
-  const [pairRows, setPairRows] = useState([]);
-  const [athDate, setAthDate] = useState("");
-
-  function handleSignInEmailFieldChange(event) {
-    event.preventDefault();
-    setSignInEmail(event.target.value);
-  }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        `https://api.coindesk.com/v1/bpi/historical/close.json`
-      );
-      const response = await result.json();
-      const data = await Object.keys(response.bpi).map((date) => {
-        return {
-          date: new Date(date),
-          price: response.bpi[date],
-        };
-      });
-      setData(data);
-    };
-
-    const fetchAth = async () => {
-      const result = await fetch(`https://api.divance.app/ath`);
-      const response = await result.json();
-      setPairRows(response.rows);
-    };
-
-    fetchData();
-    fetchAth();
-  }, []);
+export default function Home({ dataProps }) {
   return (
     <div className="flex flex-col items-center justify-center sm:h-screen py-10 bg-purple-600">
       <Head>
@@ -69,7 +36,7 @@ export default function Home() {
         </section>
 
         <div className="flex flex-row items-center justify-center flex-wrap">
-          {pairRows.map((currentPair, index) => {
+          {dataProps.pairRows.map((currentPair, index) => {
             return <AthDisplay key={index} currentPair={currentPair} logo={'bitcoin.png'}/>
           })}
         </div>
@@ -114,3 +81,37 @@ export default function Home() {
     </div>
   );
 }
+
+
+export const getServerSideProps = async () => {
+  const fetchData = async () => {
+    const result = await fetch(
+      `https://api.coindesk.com/v1/bpi/historical/close.json`
+    );
+    const response = await result.json();
+    const data = await Object.keys(response.bpi).map((date) => {
+      return {
+        date: new Date(date),
+        price: response.bpi[date],
+      };
+    });
+    return JSON.stringify(data)
+  };
+
+  const fetchAth = async () => {
+    const result = await fetch(`https://api.divance.app/ath`);
+    const response = await result.json();
+    return response.rows;
+  };
+
+  const dataProps = {
+    data: await fetchData(),
+    pairRows: await fetchAth(),
+  }
+
+  return {
+    props: {
+      dataProps
+    }
+  };
+};
