@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         Rampart: ["Nunito", "cursive"],
+        'bangers': ['"Bangers"', 'cursive'],
+        'mansalva': ['"Mansalva"', "cursive"],
       },
     },
   },
