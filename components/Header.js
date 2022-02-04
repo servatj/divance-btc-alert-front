@@ -28,7 +28,7 @@ function Header({ fixed }) {
         <div className="container px-4 mx-auto flex flex-wrap justify-between items-baseline">
           <div className="justify-center items-center">
             <h1 className="font-bangers text-purple-400 antialiased text-7xl">Divance</h1>
-            <p className="font-mansalva text-center antialiased text-1xl -mt-10"> 🟣      Crypto Community 🟣</p>
+            <p className="font-mansalva text-center antialiased text-1xl -mt-10"> 🟣 Crypto Community 🟣</p>
           </div>
           <WalletButton connectLogic={connectLogic} connected={active} />
         </div>

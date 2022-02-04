@@ -90,11 +90,21 @@ export default function Home({ dataProps, rows }) {
   ];
 
   return (
-    <div className="flex flex-col  sm:h-screen py-10 bg-purple-600">
+    <div className="flex flex-col py-10 bg-purple-600">
         <Head>
           <title>ATH Alert</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
+        <div className="flex flex-col items-center justify-center">
+            <div>
+              <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
+              <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣 Dex Portfolio (comming soon) 🟣 NFT viewer (comming soon) 🟣 launchpad & more 🟣 </p>
+              <div className="px-4 py-6 sm:px-0">
+                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+              </div>
+            </div>
+        </div>
 
         <div className="flex flex-col items-center justify-center">
             <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decision with the right Data ! ⬇️ </h1>
