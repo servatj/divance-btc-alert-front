@@ -45,7 +45,6 @@ export default function Home({ dataProps }) {
   );
 }
 
-
 export const getServerSideProps = async () => {
   const fetchData = async () => {
     const result = await fetch(

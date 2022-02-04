@@ -13,8 +13,8 @@ export default function Home({ dataProps, rows }) {
       fixed: 'left',
       render: (text, record) => {
         return (
-          <div className="flex">
-            <img src={`${record.logo_url}.png`} className="px-4 h-8"/>
+          <div className="flex align-middle">
+            <img width='60px' height='60px' src={`${record.logo_url}.png`} className="px-4 h-8"/>
             <strong>{text}</strong>
           </div>
         )
@@ -46,20 +46,26 @@ export default function Home({ dataProps, rows }) {
     {
       title: "ATH Drop",
       dataIndex: "priceDrop",
-      key: "priceDrop"
+      key: "priceDrop",
+      render: (text, record) => {
+        return <><p className="font-bold align-middle">{text} %</p></>
+      }
     },
     {
       title: "Drop Date",
       dataIndex: "price_date",
       key: "price_date",
       render: (text) => (
-        <a> 🗓️ {text} </a>
+        <p className="text-purple-600 font-bold"> 🗓️ {new Date(text).toDateString()} </p>
       )
     },
     {
       title: "Total Supply",
       dataIndex: "totalSupply",
-      key: "totalSuypply"
+      key: "totalSuypply",
+      render: (text) => {
+        return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
     },
     {
       title: "Networks",
@@ -84,16 +90,37 @@ export default function Home({ dataProps, rows }) {
   ];
 
   return (
-    <div className="flex flex-col  sm:h-screen py-10 px-5 bg-purple-600">
-      <Head>
-        <title>ATH Alert</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="flex flex-col  sm:h-screen py-10 bg-purple-600">
+        <Head>
+          <title>ATH Alert</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <div className="flex flex-col items-center justify-center">
-          <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  />
+        <div className="flex flex-col items-center justify-center">
+            <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decision with the right Data ! ⬇️ </h1>
+            <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  />
+        </div>
+
+        <div className="flex align-baseline items-center justify-center">
+          <div>
+            <section className="flex-row  py-4">
+              <a
+                href="https://t.me/divanceath"
+                className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group"
+              >
+                <span className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0"></span>
+                <span className="absolute inset-0 w-full h-full bg-white rounded-md "></span>
+                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 "></span>
+                <span className="relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                  Join Telegram Alert
+                </span>
+              </a>
+            </section>
+          </div>
+          <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl" >Never miss an ATH join the telegram group </h1>
+        </div>
       </div>
-    </div>
   );
 }
 
