@@ -11,7 +11,14 @@ export default function Home({ dataProps, rows }) {
       dataIndex: "pair",
       key: "pair",
       fixed: 'left',
-      render: (text) => <strong>{text}</strong>
+      render: (text, record) => {
+        return (
+          <div className="flex">
+            <img src={`${record.logo_url}.png`} className="px-4 h-8"/>
+            <strong>{text}</strong>
+          </div>
+        )
+      }
     },
     {
       title: "Price",
@@ -77,7 +84,7 @@ export default function Home({ dataProps, rows }) {
   ];
 
   return (
-    <div className="flex flex-col  sm:h-screen py-10 bg-purple-600">
+    <div className="flex flex-col  sm:h-screen py-10 px-5 bg-purple-600">
       <Head>
         <title>ATH Alert</title>
         <link rel="icon" href="/favicon.ico" />
@@ -94,16 +101,6 @@ export const getServerSideProps = async () => {
 
   let rows;
 
-  const fetchData = async () => {
-    const result = await fetch(`https://api.coindesk.com/v1/bpi/historical/close.json`);
-    const response = await result.json();
-    const data = await Object.keys(response.bpi).map((date) => ({
-      date: new Date(date),
-      price: response.bpi[date],
-    }));
-    return JSON.stringify(data);
-  };
-
   const fetchAth = async () => {
     const result = await fetch(`https://api.divance.app/ath`);
     const response = await result.json();
@@ -112,7 +109,6 @@ export const getServerSideProps = async () => {
   };
 
   const dataProps = {
-    data: await fetchData(),
     pairRows: await fetchAth(),
   }
 
