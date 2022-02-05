@@ -7,13 +7,9 @@ import Header from '../../components/Header';
 import {
   AreaChart,
   Area,
-  LineChart,
-  Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -24,9 +20,7 @@ const getChartColors = (isChangePositive) => {
 };
 
 export default function PostPage() {
-  const colors = getChartColors(true);
   const router = useRouter();
-
   const [data, setData] = useState(0);
   const [currentPrice, setCurrentPrice] = useState(0);
 
@@ -59,7 +53,6 @@ export default function PostPage() {
   return (
     <>
       <div className="flex flex-col items-center h-screen bg-purple-600">
-        <Header fixed="true" />
         <div className="flex flex-wrap py-5 bg-purple-600">
           <p className= "px-2 text-2xl font-bold"><a href="/" className="text-white px-2 text-2xl font-semibold">home</a>/ {router.query.pair}</p>
         </div>
