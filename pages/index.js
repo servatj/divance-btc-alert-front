@@ -1,8 +1,9 @@
 import Head from "next/head";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag } from "antd";
 import "antd/dist/antd.css";
 import calc from '../lib/calc';
 import Link from 'next/link';
+import Router from 'next/router';
 
 
 export default function Home({ dataProps, rows }) {
@@ -121,7 +122,12 @@ export default function Home({ dataProps, rows }) {
 
         <div className="flex flex-col items-center justify-center">
             <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decisions with the right Data ! ⬇️ </h1>
-            <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  />
+            <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}
+              onRow={(record) => {
+                return {
+                onClick: event => Router.push(`/pair/${record.pair}`)
+              };}}
+            />
         </div>
 
 

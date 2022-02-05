@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Table, Tag, Space } from "antd";
 import "antd/dist/antd.css";
 import calc from '../lib/calc'
 
