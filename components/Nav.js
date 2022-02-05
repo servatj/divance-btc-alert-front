@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import WalletButton from './WalletButton';
 import { useWeb3React } from "@web3-react/core";
+import Link from 'next/link';
 
 
 const Nav = () => {
@@ -26,15 +27,20 @@ const Nav = () => {
   return (
     <div>
       <nav className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-bet h-16">
-            <div className="flex items-center justify-between">
-              <div className="flex justify-between">
-                <img
-                  className="h-8 w-8"
-                  src='/divancelogo.png'
-                  alt="Divance logo"
-                />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+               <Link href='/'>
+                  <img
+                    className="h-8 w-8 hover:cursor-pointer"
+                    src='/divancelogo.png'
+                    alt="Divance logo"
+                  />
+               </Link>
+                {/* <h1 className="font-bangers text-black text-4xl">
+                    Divance
+                  </h1> */}
                 {/* <h1 className="font-bangers text-white text-4xl">
                     Divance
                   </h1>
@@ -45,40 +51,26 @@ const Nav = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <a
-                    href="#"
-                    className=" hover:bg-gray-700 text-black px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Portfolio
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Team
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Projects
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Calendar
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Reports
-                  </a>
+                  <Link href="/portfolio">
+                    <a className=" hover:bg-gray-700 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                      🚀 Portfolio
+                    </a>
+                  </Link>
+                  <Link href='/nft-viewer'>
+                    <a className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                      🐒 NFT Viewer
+                    </a>
+                  </Link>
+                  <Link href='/blog'>
+                    <a className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                      🗒️ Blog
+                    </a>
+                  </Link>
+                  <Link href='/calendar'>
+                    <a className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                      📅 Calendar
+                    </a>
+                  </Link>
                   <WalletButton connectLogic={connectLogic} connected={active} />
                 </div>
               </div>
@@ -142,40 +134,27 @@ const Nav = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a
-                  href="#"
-                  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Dashboard
-                </a>
+                <Link href="/portfolio">
+                    <a className="text-black hover:bg-gray-900 hover:text-white text-white block px-3 py-2 rounded-md text-base font-medium">
+                      🚀 Portfolio
+                    </a>
+                </Link>
 
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Team
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Projects
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Calendar
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Reports
-                </a>
+                <Link href="/nft-viewer" >
+                  <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    🐒 NFT Viewer
+                  </a>
+                </Link>
+                <Link href="/blog" >
+                  <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    🗒️ Blog
+                  </a>
+                </Link>
+                 <Link href='/calendar'>
+                    <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                      📅 Calendar
+                    </a>
+                 </Link>
                 <WalletButton connectLogic={connectLogic} connected={active} />
               </div>
             </div>

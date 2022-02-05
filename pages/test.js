@@ -29,7 +29,7 @@ export default () => {
           </p>
         </div>
 
-        <div className="w-full h-64 rounded-lg shadow-2xl bg-black">k</div>
+        <div className="invisible sm:visible w-full h-64 rounded-lg shadow-2xl bg-black">k</div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { Table, Tag, Space } from "antd";
 import "antd/dist/antd.css";
-import calc from '../lib/calc'
+import calc from '../lib/calc';
+import Link from 'next/link';
+
 
 export default function Home({ dataProps, rows }) {
 
@@ -15,7 +17,11 @@ export default function Home({ dataProps, rows }) {
         return (
           <div className="flex align-middle">
             <img width='60px' height='60px' src={`${record.logo_url}.png`} className="px-4 h-8"/>
-            <strong>{text}</strong>
+            <Link href={`/pair/${text}`} >
+              <a className="hover:bg-gray-700 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                {text}
+              </a>
+            </Link>
           </div>
         )
       }
@@ -99,7 +105,12 @@ export default function Home({ dataProps, rows }) {
         <div className="flex flex-col items-center justify-center">
             <div>
               <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
-              <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣 Dex Portfolio (comming soon) 🟣 NFT viewer (comming soon) 🟣 launchpad & more 🟣 </p>
+              <div className="grid gap-4  grid-rows-4 sm:grid-cols-4 ">
+                <div><p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣</p></div>
+                <div><p className="font-bangers text-2xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p></div>
+                <div><p className="font-bangers text-2xl text-white">🟣 NFT viewer (comming soon) 🟣</p></div>
+                <div><p className="font-bangers text-2xl text-white">🟣 launchpad & more 🟣 </p></div>
+              </div>
               <div className="px-4 py-6 sm:px-0">
                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
               </div>
@@ -128,7 +139,7 @@ export default function Home({ dataProps, rows }) {
               </a>
             </section>
           </div>
-          <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl" >Never miss an ATH join the telegram group </h1>
+          <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl" >Never miss an ATH join the telegram group ! </h1>
         </div>
       </div>
   );
