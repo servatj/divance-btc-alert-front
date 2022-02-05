@@ -103,7 +103,9 @@ export default function Home({ dataProps, rows }) {
               <h1 className="font-bangers text-3xl text-white">Portfolio </h1>
               <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣 Dex Portfolio (comming soon) 🟣 NFT viewer (comming soon) 🟣 launchpad & more 🟣 </p>
               <div className="px-4 py-6 sm:px-0">
-                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+                <div className="flex flex-col justify-center items-center border-4 border-dashed border-gray-200 rounded-lg h-96">
+                  <p className="font-bangers text-6xl text-white">Coming Soon !!!</p>
+                </div>
               </div>
             </div>
         </div>
