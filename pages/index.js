@@ -102,14 +102,14 @@ export default function Home({ dataProps, rows }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="flex flex-col items-center justify-center">
+       <div className="flex flex-col items-center justify-center">
             <div>
               <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
               <div className="grid gap-4 sm:grid-cols-4 ">
-                <p className="font-bangers sm:text-2xl text-3xl text-white">🟣 Crypto Community 🟣</p>
-                <p className="font-bangers sm:text-2xl text-3xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p>
-                <p className="font-bangers sm:text-2xl text-3xl text-white">🟣 NFT viewer (comming soon) 🟣</p>
-                <p className="font-bangers sm:text-2xl text-3xl text-white">🟣 launchpad & more 🟣</p>
+                <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣</p>
+                <p className="font-bangers text-2xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p>
+                <p className="font-bangers text-2xl text-white">🟣 NFT viewer (comming soon) 🟣</p>
+                <p className="font-bangers text-2xl text-white">🟣 launchpad & more 🟣</p>
               </div>
               <div className="px-4 py-6 sm:px-0">
                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
@@ -117,14 +117,17 @@ export default function Home({ dataProps, rows }) {
             </div>
         </div>
 
+
+
         <div className="flex flex-col items-center justify-center">
-            <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decision with the right Data ! ⬇️ </h1>
+            <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decisions with the right Data ! ⬇️ </h1>
             <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  />
         </div>
 
-        <div className="flex align-baseline items-center justify-center">
-          <div>
-            <section className="flex-row  py-4">
+
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl" >Never miss an ATH join the telegram group ! </h1>
+          <section className="flex">
               <a
                 href="https://t.me/divanceath"
                 className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group"
@@ -138,9 +141,8 @@ export default function Home({ dataProps, rows }) {
                 </span>
               </a>
             </section>
-          </div>
-          <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl" >Never miss an ATH join the telegram group ! </h1>
         </div>
+
       </div>
   );
 }
