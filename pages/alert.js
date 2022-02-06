@@ -34,6 +34,7 @@ export default function Home({ dataProps }) {
 
         <div className="flex flex-row items-center justify-center flex-wrap">
           {dataProps.pairRows.map((currentPair, index) => {
+            console.log(currentPair)
             return <AthDisplay key={index} currentPair={currentPair} logo={'bitcoin.png'}/>
           })}
         </div>

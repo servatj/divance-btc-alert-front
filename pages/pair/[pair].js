@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { DateTime } from "luxon";
-import Image from 'next/image';
-import Header from '../../components/Header';
+import Image from "next/image";
+import TokenInfo from "../../components/TokenInfo";
 
 import {
   AreaChart,
@@ -23,6 +23,11 @@ export default function PostPage() {
   const router = useRouter();
   const [data, setData] = useState(0);
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [pairInfo, setPairInfo] = useState({
+    price_date: new Date(),
+    symbol: "",
+    high: 0,
+  });
 
   useEffect(() => {
     const getCurrentPrice = async (MARKET_CHART_ID) => {
@@ -44,6 +49,20 @@ export default function PostPage() {
             uv: value,
           };
         });
+
+        const data = await fetch(
+          `http://api.divance.app/ath/pair/${router.query.pair}`
+        );
+        const { tokenListMerged } = await data.json();
+
+        const pairInfo = {
+          symbol: tokenListMerged.symbol,
+          high: tokenListMerged.high,
+          price_date: tokenListMerged.price_date,
+        };
+
+        console.log(router.query.pair, tokenListMerged);
+        setPairInfo(pairInfo);
         setData(priceGroup.reverse());
       }
     };
@@ -51,14 +70,20 @@ export default function PostPage() {
   }, [router.query.pair]);
 
   return (
-    <>
-      <div className="flex flex-col items-center h-screen bg-purple-600">
-        <div className="flex flex-wrap py-5 bg-purple-600">
-          <p className= "px-2 text-2xl font-bold"><a href="/" className="text-white px-2 text-2xl font-semibold">home</a>/ {router.query.pair}</p>
-        </div>
-        <div className="flex flex-col w-8/12 h-2/4 bg-gray-800 ui-chart">
+    <div className="h-screen bg-purple-600">
+      <div className="flex flex-wrap py-5 bg-purple-600">
+        <p className="px-2 text-2xl font-bold">
+          <a href="/" className="text-white px-2 text-2xl font-semibold">
+            home
+          </a>
+          / {router.query.pair}
+        </p>
+      </div>
+
+      <div class="sm:px-10 grid grid-cols-1 grid-rows-4 gap-4">
+        <div className="flex flex-col w-12/12 h-4/4  bg-gray-800 ui-chart">
           <div className="bg-gray-800 text-purple-400 text-2xl w-full p-4">
-            <div className="flex  align-baseline">
+            <div className="flex flex-wrap align-baseline">
               <div className="text-white text-4xl font-bold"><h2 className="text-4xl font-bold mb-2 text-white">{currentPrice}</h2></div>
               <div className="mx-4"> <Image src={`/${router.query.pair}.png`} width="20" height="25"/></div>
               <div className=" font-bold">{router.query.pair ? router.query.pair.toUpperCase() : ""} / USDT </div>
@@ -109,7 +134,31 @@ export default function PostPage() {
             </AreaChart>
           </ResponsiveContainer>
         </div>
+        <div className="flex bg-gray-800">
+          <TokenInfo
+            currentPair={pairInfo}
+            logo={"bitcoin.png"}
+            logo={"bitcoin.png"}
+          />
+          <div>
+            <div className="flex p-3">
+              <button class="bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4  m-x-2 rounded-full">
+                Website
+              </button>
+              <button class="bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4 m-x-2 rounded-full">
+                Coinmarketcap
+              </button>
+            </div>
+            <h1 className="px-2 py-4 font-nunito text-2xl text-purple-600">What is bitcoin</h1>
+            <p className="px-2 font-nunito text-1xl text-white">Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto. It was launched soon after, in January 2009.
+
+Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.”
+
+Some concepts for a similar type of a decentralized electronic currency precede BTC, but Bitcoin holds the distinction of being the first-ever cryptocurrency to come into actual use.</p>
+          </div>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 }
