@@ -59,6 +59,8 @@ export default function PostPage() {
           symbol: tokenListMerged.symbol,
           high: tokenListMerged.high,
           price_date: tokenListMerged.price_date,
+          currentPrice: tokenListMerged.currentPrice,
+          pair: tokenListMerged.pair
         };
 
         console.log(router.query.pair, tokenListMerged);
@@ -137,8 +139,6 @@ export default function PostPage() {
         <div className="flex bg-gray-800">
           <TokenInfo
             currentPair={pairInfo}
-            logo={"bitcoin.png"}
-            logo={"bitcoin.png"}
           />
           <div>
             <div className="flex p-3">
