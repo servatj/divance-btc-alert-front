@@ -1,6 +1,6 @@
 export default function Footer() {
    return (
-    <div className="relative py-9">
+    <div className="relative py-14">
     <div className="flex items-center justify-center space-x-3">
       <a
         href="https://www.instagram.com/divance_community/"
@@ -30,7 +30,7 @@ export default function Footer() {
     <div className="flex items-center justify-center space-x-3">
       <p className="text-1xl text-black">
         {" "}
-        --> powered by Divance http://divance.app {" "}
+        powered by Divance http://divance.app {" "}
       </p>
     </div>
   </div>

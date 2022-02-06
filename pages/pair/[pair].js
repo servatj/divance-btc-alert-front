@@ -51,7 +51,7 @@ export default function PostPage() {
         });
 
         const data = await fetch(
-          `http://api.divance.app/ath/pair/${router.query.pair}`
+          `https://api.divance.app/ath/pair/${router.query.pair}`
         );
         const { tokenListMerged } = await data.json();
 
