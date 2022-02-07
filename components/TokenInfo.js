@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import calc from '../lib/calc'
 
 const athDisplay = ({ currentPair }) => {

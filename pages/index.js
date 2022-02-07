@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import calc from '../lib/calc';
 import Link from 'next/link';
 import Router from 'next/router';
-
+import Image from "next/image";
 
 export default function Home({ dataProps, rows }) {
 
@@ -96,6 +96,18 @@ export default function Home({ dataProps, rows }) {
     },
   ];
 
+  const NewItem = ({ title }) => (
+    <>
+      <Image
+        alt="Picture of the author"
+        src="/bitcoin.png"
+        width={50}
+        height={50}
+      />
+      <h1 className="font-bangers text-2xl text-black p-2">{title}</h1>
+    </>
+  )
+
   return (
     <div className="flex flex-col py-10 bg-purple-600">
         <Head>
@@ -111,10 +123,14 @@ export default function Home({ dataProps, rows }) {
                 <p className="font-bangers text-2xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p>
                 <p className="font-bangers text-2xl text-white">🟣 NFT viewer (comming soon) 🟣</p>
                 <p className="font-bangers text-2xl text-white">🟣 launchpad & more 🟣</p>
+
               </div>
-              <div className="px-4 py-6 sm:px-0">
-                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-              </div>
+
+                <div className="px-4 py-6 sm:px-0 border-red-200 border-t-2 border-b-2">
+                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+                </div>
+
+
             </div>
         </div>
 
