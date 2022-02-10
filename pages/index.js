@@ -127,7 +127,7 @@ export default function Home({ dataProps, rows }) {
               </div>
 
                 <div className="px-4 py-6 sm:px-0 border-red-200 border-t-2 border-b-2">
-                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+                  Crypto News --> Coming Soon
                 </div>
 
 
@@ -138,7 +138,7 @@ export default function Home({ dataProps, rows }) {
 
         <div className="flex flex-col items-center justify-center">
             <h1 className="font-bangers text-6xl p-10 text-white font-10xl">Make better decisions with the right Data ! ⬇️ </h1>
-            <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '20', '30']}}
+            <Table columns={columns} dataSource={rows} scroll={{ x: 1500 }}  pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
               onRow={(record) => {
                 return {
                 onClick: event => Router.push(`/pair/${record.pair}`)
