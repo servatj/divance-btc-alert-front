@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import WalletButton from './WalletButton';
-import { useWeb3React } from "@web3-react/core";
 import Link from 'next/link';
+import { useMoralis } from 'react-moralis'
 
 
 const Nav = () => {
+  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [isOpen, setIsOpen] = useState(false);
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-
 
   async function connectLogic() {
     try {
-      if(active) {
-        deactivate();
+      if(isAuthenticated) {
+        logout();
       } else {
         console.log('Ativate')
-        await activate(injected);
+        await authenticate();
       }
     } catch (ex) {
       console.log(ex);
@@ -71,7 +70,7 @@ const Nav = () => {
                       📅 Calendar
                     </a>
                   </Link>
-                  <WalletButton connectLogic={connectLogic} connected={active} />
+                  <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
                 </div>
               </div>
             </div>

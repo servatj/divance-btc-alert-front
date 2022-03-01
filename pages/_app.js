@@ -1,16 +1,12 @@
 import 'tailwindcss/tailwind.css'
 import Script from 'next/script'
-
-import { Web3ReactProvider } from '@web3-react/core'
-import Web3 from 'web3'
 import Layout from '../components/Layout'
+import { MoralisProvider } from "react-moralis";
 
-function getLibrary(provider) {
-  return new Web3(provider)
-}
 
 function MyApp({ Component, pageProps }) {
-
+  const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
+  const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APP_ID;
   return (
     <>
       <Script
@@ -28,11 +24,11 @@ function MyApp({ Component, pageProps }) {
           `
         }
       </Script>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        <Layout>
-           <Component {...pageProps} />
-        </Layout>
-      </Web3ReactProvider>
+        <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </MoralisProvider>
     </>
   )
 }

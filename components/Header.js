@@ -1,21 +1,19 @@
-import Image from 'next/image';
 import WalletButton from './WalletButton';
 import React from "react";
-
-import { useWeb3React } from "@web3-react/core";
-import { injected } from "../components/Connectors";
+import { useMoralis } from 'react-moralis'
 
 function Header({ fixed }) {
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
 
   async function connectLogic() {
     try {
-      if(active) {
-        deactivate();
+      if(isAuthenticated) {
+        logout();
       } else {
         console.log('Ativate')
-        await activate(injected);
+        await authenticate();
       }
     } catch (ex) {
       console.log(ex);
@@ -30,7 +28,7 @@ function Header({ fixed }) {
             <h1 className="font-bangers text-purple-400 antialiased text-7xl">Divance</h1>
             <p className="font-mansalva text-center antialiased text-1xl -mt-10"> 🟣 Crypto Community 🟣</p>
           </div>
-          <WalletButton connectLogic={connectLogic} connected={active} />
+          <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
         </div>
       </nav>
     </>
