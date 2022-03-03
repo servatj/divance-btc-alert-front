@@ -1,0 +1,79 @@
+[
+ {
+    "id": "1",
+    "name": "bitcoin",
+    "img": "bitcoin",
+    "pair": "BTC/USD",
+    "symbol": "btc"
+ },
+ {
+    "id": "2",
+    "name": "ethereum",
+    "img": "ethereum",
+    "pair": "ETH/USD",
+    "symbol": "eth"
+ },
+ {
+    "id": "3",
+    "name": "luna",
+    "img": "terra-luna",
+    "pair": "LUNA/USD",
+    "symbol": "terra-luna"
+ },
+ {
+    "id": "4",
+    "name": "zignaly",
+    "img": "zignaly",
+    "pair": "ZIG/USD",
+    "symbol": "zig"
+ },
+ {
+    "id": "5",
+    "name": "solana",
+    "img": "solana",
+    "pair": "SOL/USD",
+    "symbol": "sol"
+ },
+ {
+    "id": "6",
+    "name": "cosmos",
+    "img": "cosmos",
+    "pair": "ATOM/USD",
+    "symbol": "atom"
+ },
+ {
+    "id": "7",
+    "name": "polkadot",
+    "img": "polkadot",
+    "pair": "DOT/USD",
+    "symbol": "dot"
+ },
+ {
+    "id": "8",
+    "name": "cardano",
+    "img": "cardano",
+    "pair": "ADA/USD",
+    "symbol": "ada"
+ },
+ {
+    "id": "9",
+    "name": "chainlink",
+    "img": "chainlink",
+    "pair": "LINK/USD",
+    "symbol": "link"
+ },
+ {
+    "id": "10",
+    "name": "fantom",
+    "img": "phantom",
+    "pair": "FTM/USD",
+    "symbol": "ftm"
+  },
+  {
+    "id": "11",
+    "name": "axie",
+    "img": "axie",
+    "pair": "AXS/USD",
+    "symbol": "axs"
+  }
+]
