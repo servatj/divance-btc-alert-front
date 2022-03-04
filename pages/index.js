@@ -162,6 +162,7 @@ export default function Home({ dataProps, rows }) {
         <Search />
         <Table
           columns={columns}
+          rowKey="pair"
           dataSource={rows}
           scroll={{ x: 1500 }}
           pagination={{
