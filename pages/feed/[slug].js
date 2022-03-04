@@ -15,7 +15,10 @@ export default function Article({ source, meta }) {
           <title>Blog</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div>
+        <div className='container mx-auto bg-white p-10'>
+          <h1 className="font-semibold my-8 text-3xl text-black ">
+            {meta.title}
+          </h1>
           <MDXRemote {...source} components={components} />
         </div>
     </div>
