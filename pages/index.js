@@ -1,26 +1,27 @@
-import Head from "next/head";
-import { Table, Tag } from "antd";
-import "antd/dist/antd.css";
-import calc from "../lib/calc";
-import Link from "next/link";
-import Router from "next/router";
-import Image from "next/image";
-import Search from "../components/Search";
+import Head from 'next/head';
+import { Table, Tag } from 'antd';
+import 'antd/dist/antd.css';
+import calc from '../lib/calc';
+import Link from 'next/link';
+import Router from 'next/router';
+import Image from 'next/image';
+import Search from '../components/Search';
 
 export default function Home({ dataProps, rows }) {
   const columns = [
     {
-      title: "Name",
-      dataIndex: "pair",
-      key: "pair",
-      fixed: "left",
+      title: 'Name',
+      dataIndex: 'pair',
+      key: 'pair',
+      fixed: 'left',
       render: (text, record) => {
         return (
           <div className="flex align-middle">
-            <img
-              width="60px"
-              height="60px"
-              src={`${record.logo_url}.png`}
+            <Image
+              alt="logo"
+              width="40px"
+              height="40px"
+              src={`/${record.logo_url}.png`}
               className="px-4 h-8"
             />
             <Link href={`/pair/${text}`}>
@@ -33,19 +34,19 @@ export default function Home({ dataProps, rows }) {
       },
     },
     {
-      title: "Price",
-      dataIndex: "currentPrice",
-      key: "currentPrice",
+      title: 'Price',
+      dataIndex: 'currentPrice',
+      key: 'currentPrice',
     },
     {
-      title: "ATH",
-      dataIndex: "high",
-      key: "high",
+      title: 'ATH',
+      dataIndex: 'high',
+      key: 'high',
     },
     {
-      title: "ATH Bar",
-      dataIndex: "priceDropBar",
-      key: "priceDropBar",
+      title: 'ATH Bar',
+      dataIndex: 'priceDropBar',
+      key: 'priceDropBar',
       render: (text, record) => (
         <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
           <div
@@ -58,9 +59,9 @@ export default function Home({ dataProps, rows }) {
       ),
     },
     {
-      title: "ATH Drop",
-      dataIndex: "priceDrop",
-      key: "priceDrop",
+      title: 'ATH Drop',
+      dataIndex: 'priceDrop',
+      key: 'priceDrop',
       render: (text, record) => {
         return (
           <>
@@ -70,34 +71,31 @@ export default function Home({ dataProps, rows }) {
       },
     },
     {
-      title: "Drop Date",
-      dataIndex: "price_date",
-      key: "price_date",
+      title: 'Drop Date',
+      dataIndex: 'price_date',
+      key: 'price_date',
       render: (text) => (
-        <p className="text-purple-600 font-bold">
-          {" "}
-          🗓️ {new Date(text).toDateString()}{" "}
-        </p>
+        <p className="text-purple-600 font-bold"> 🗓️ {new Date(text).toDateString()} </p>
       ),
     },
     {
-      title: "Total Supply",
-      dataIndex: "totalSupply",
-      key: "totalSuypply",
+      title: 'Total Supply',
+      dataIndex: 'totalSupply',
+      key: 'totalSuypply',
       render: (text) => {
-        return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       },
     },
     {
-      title: "Networks",
-      key: "networks",
-      dataIndex: "networks",
+      title: 'Networks',
+      key: 'networks',
+      dataIndex: 'networks',
       render: (tags) => (
         <>
           {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'loser') {
+              color = 'volcano';
             }
             return (
               <Tag color={color} key={tag}>
@@ -110,18 +108,6 @@ export default function Home({ dataProps, rows }) {
     },
   ];
 
-  const NewItem = ({ title }) => (
-    <>
-      <Image
-        alt="Picture of the author"
-        src="/bitcoin.png"
-        width={50}
-        height={50}
-      />
-      <h1 className="font-bangers text-2xl text-black p-2">{title}</h1>
-    </>
-  );
-
   return (
     <div className="flex flex-col py-10 bg-purple-600">
       <Head>
@@ -131,33 +117,23 @@ export default function Home({ dataProps, rows }) {
 
       <div className="flex flex-col items-center justify-center">
         <div>
-          <h1 className="font-bangers text-3xl text-white">
-            Welcome to Divance{" "}
-          </h1>
+          <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
           <div className="grid gap-4 sm:grid-cols-4 ">
-            <p className="font-bangers text-2xl text-white">
-              🟣 Crypto Community 🟣
-            </p>
-            <p className="font-bangers text-2xl text-white">
-              🟣 Dex Portfolio (comming soon) 🟣
-            </p>
-            <p className="font-bangers text-2xl text-white">
-              🟣 NFT viewer (comming soon) 🟣
-            </p>
-            <p className="font-bangers text-2xl text-white">
-              🟣 launchpad & more 🟣
-            </p>
+            <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣</p>
+            <p className="font-bangers text-2xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p>
+            <p className="font-bangers text-2xl text-white">🟣 NFT viewer (comming soon) 🟣</p>
+            <p className="font-bangers text-2xl text-white">🟣 launchpad & more 🟣</p>
           </div>
 
           <div className="px-4 py-6 sm:px-0 border-red-200 border-t-2 border-b-2">
-            Crypto News --> Coming Soon
+            Crypto News --&gt; Coming Soon
           </div>
         </div>
       </div>
 
       <div className="flex flex-col items-center justify-center">
         <h1 className="font-bangers text-6xl p-10 text-white font-10xl">
-          Make better decisions with the right Data ! ⬇️{" "}
+          Make better decisions with the right Data ! ⬇️{' '}
         </h1>
         <Search />
         <Table
@@ -168,7 +144,7 @@ export default function Home({ dataProps, rows }) {
           pagination={{
             defaultPageSize: 10,
             showSizeChanger: true,
-            pageSizeOptions: ["10", "20", "30"],
+            pageSizeOptions: ['10', '20', '30'],
           }}
           onRow={(record) => {
             return {
@@ -180,7 +156,7 @@ export default function Home({ dataProps, rows }) {
 
       <div className="flex flex-col items-center justify-center">
         <h1 className="font-bangers text-6xl p-10 text-yellow-600 font-10xl">
-          Never miss an ATH join the telegram group !{" "}
+          Never miss an ATH join the telegram group !{' '}
         </h1>
         <section className="flex">
           <a

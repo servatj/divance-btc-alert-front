@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+./vscode
 
 # testing
 /coverage
@@ -33,3 +34,5 @@ yarn-error.log*
 # vercel
 .vercel
 .env test.local
+.vscode/settings.json
+.vscode/launch.json
