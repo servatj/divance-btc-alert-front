@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { DateTime } from "luxon";
 import Image from "next/image";
 import TokenInfo from "../../components/TokenInfo";
+import Post from '../../components/Post';
 
 import {
   AreaChart,
@@ -150,12 +151,8 @@ export default function PostPage() {
               </button>
             </div>
             <h1 className="px-2 py-4 font-nunito text-2xl text-purple-600">What is bitcoin</h1>
-            <p className="px-2 font-nunito text-1xl text-white">Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto. It was launched soon after, in January 2009.
-
-Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.”
-
-Some concepts for a similar type of a decentralized electronic currency precede BTC, but Bitcoin holds the distinction of being the first-ever cryptocurrency to come into actual use.</p>
-          </div>
+            <Post fullPath={'../../posts/bitcoin.yml'}/>
+           </div>
         </div>
 
       </div>
