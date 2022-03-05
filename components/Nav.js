@@ -62,6 +62,14 @@ const Nav = () => {
                       📅 Calendar
                     </a>
                   </Link>
+                  {account ? (
+                    <p className="text-purple-600">{` 🗒️  ${account.substring(
+                      0,
+                      6
+                    )}...${account.substring(account.length - 4)} `}</p>
+                  ) : (
+                    ''
+                  )}
                   <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
                 </div>
               </div>
