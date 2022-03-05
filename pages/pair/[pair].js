@@ -65,7 +65,7 @@ export default function PostPage() {
   }, [router.query.pair]);
 
   return (
-    <div className="h-screen bg-purple-600">
+    <div className="xl:h-screen bg-purple-600">
       <div className="flex flex-wrap py-5 bg-purple-600">
         <p className="px-2 text-2xl font-bold">
           <Link href="/" className="text-white px-2 text-2xl font-semibold">
@@ -83,8 +83,12 @@ export default function PostPage() {
                 <h2 className="text-4xl font-bold mb-2 text-white">{currentPrice}</h2>
               </div>
               <div className="mx-4">
-                {' '}
-                <Image alt="pair-logo" src={`/${router.query.pair}.png`} width="20" height="25" />
+                <Image
+                  alt="pair-logo"
+                  src={`/${router.query.pair}.png`}
+                  width="20px"
+                  height="25px"
+                />
               </div>
               <div className=" font-bold">
                 {router.query.pair ? router.query.pair.toUpperCase() : ''} / USDT{' '}
@@ -129,8 +133,8 @@ export default function PostPage() {
           </ResponsiveContainer>
         </div>
         <div className="flex bg-gray-800">
-          <TokenInfo currentPair={pairInfo} />
           <div>
+            <TokenInfo currentPair={pairInfo} />
             <div className="flex p-3">
               <button className="bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4  m-x-2 rounded-full">
                 Website

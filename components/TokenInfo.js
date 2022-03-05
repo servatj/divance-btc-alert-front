@@ -26,13 +26,6 @@ const athDisplay = ({ currentPair }) => {
           <div className="relative py-3">
             <div className="flex">
               <h2 className="text-2xl font-bold mb-2 text-white">{currentPair.symbol}</h2>
-              <Image
-                width={'40px'}
-                heigth={'40px'}
-                src={`/${currentPair.pair}.png`}
-                className="px-4 h-8"
-                alt="Token logo"
-              />
             </div>
             <div className="bg-purple-600 p-6 rounded-lg shadow-lg items-center text-center">
               <p className="text-white text-2xl font-bold">
