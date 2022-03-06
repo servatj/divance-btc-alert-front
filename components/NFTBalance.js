@@ -78,7 +78,7 @@ function NFTBalance() {
                 <Card
                   hoverable
                   actions={[
-                    <Tooltip title="View On Blockexplorer">
+                    <Tooltip key="1" title="View On Blockexplorer">
                       <FileSearchOutlined
                         onClick={() =>
                           window.open(
@@ -88,10 +88,10 @@ function NFTBalance() {
                         }
                       />
                     </Tooltip>,
-                    <Tooltip title="Transfer NFT">
+                    <Tooltip key="2" title="Transfer NFT">
                       <SendOutlined onClick={() => handleTransferClick(nft)} />
                     </Tooltip>,
-                    <Tooltip title="Sell On OpenSea">
+                    <Tooltip key="3" title="Sell On OpenSea">
                       <ShoppingCartOutlined onClick={() => alert('OPENSEA INTEGRATION COMING!')} />
                     </Tooltip>,
                   ]}
