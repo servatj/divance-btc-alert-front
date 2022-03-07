@@ -1,4 +1,3 @@
-import CodeBlock from '../../components/CodeBlock';
 import { MDXRemote, heading } from 'next-mdx-remote';
 import Head from 'next/head';
 import styles from '../../styles/feed.module.css';
@@ -9,7 +8,6 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const components = {
-  code: CodeBlock,
   SyntaxHighlighter,
 };
 
