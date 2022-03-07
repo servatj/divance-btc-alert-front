@@ -6,13 +6,26 @@ import { useMoralis } from 'react-moralis';
 import Image from 'next/image';
 
 const Nav = () => {
-  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
+  const {
+    authenticate,
+    isAuthenticated,
+    account,
+    chainId,
+    logout,
+    isWeb3Enabled,
+    enableWeb3,
+    isWeb3EnableLoading,
+  } = useMoralis();
+
   const [isOpen, setIsOpen] = useState(false);
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   useEffect(() => {
-    console.log('isAuthenticated', isAuthenticated);
-  }, []);
+    const connectorId = window.localStorage.getItem('connectorId');
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
+      enableWeb3({ provider: connectorId });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, isWeb3Enabled]);
 
   async function connectLogic() {
     try {
