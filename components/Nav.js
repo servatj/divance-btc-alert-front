@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import WalletButton from './WalletButton';
 import Link from 'next/link';
@@ -9,6 +9,10 @@ const Nav = () => {
   const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [isOpen, setIsOpen] = useState(false);
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  useEffect(() => {
+    console.log('isAuthenticated', isAuthenticated);
+  }, []);
 
   async function connectLogic() {
     try {
@@ -154,7 +158,7 @@ const Nav = () => {
                     📅 Calendar
                   </a>
                 </Link>
-                <WalletButton connectLogic={connectLogic} connected={active} />
+                <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
               </div>
             </div>
           )}
