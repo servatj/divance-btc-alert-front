@@ -24,14 +24,11 @@ export default function Home({ dataProps, rows }) {
       <div className="flex flex-col items-center justify-center">
         <div>
           <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
-          <div className="grid gap-4 sm:grid-cols-4 ">
+          <div className="grid gap-4 xl:grid-cols-4 ">
             <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣</p>
-            <p className="font-bangers text-2xl text-white">🟣 Dex Portfolio (comming soon) 🟣</p>
-            <p className="font-bangers text-2xl text-white">🟣 NFT viewer (comming soon) 🟣</p>
-            <p className="font-bangers text-2xl text-white">🟣 launchpad & more 🟣</p>
           </div>
 
-          <div className="px-4 py-6 sm:px-0 border-red-200 border-t-2 border-b-2">
+          <div className="px-4 py-6 xl:px-0 border-red-200 border-t-2 border-b-2">
             Crypto News --&gt; Coming Soon
           </div>
         </div>
@@ -81,8 +78,6 @@ export const getServerSideProps = async () => {
   const dataProps = {
     pairRows: await fetchAth(),
   };
-
-  console.log(dataProps);
 
   return {
     props: {

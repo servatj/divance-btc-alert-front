@@ -10,7 +10,6 @@ const Nav = () => {
     authenticate,
     isAuthenticated,
     account,
-    chainId,
     logout,
     isWeb3Enabled,
     enableWeb3,
