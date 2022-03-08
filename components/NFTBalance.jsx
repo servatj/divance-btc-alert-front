@@ -7,8 +7,6 @@ import AddressInput from './AddressInput';
 import { useVerifyMetadata } from 'hooks/useVerifyMetadata';
 import CardNft from './CardNft';
 
-const { Meta } = Card;
-
 const styles = {
   NFTs: {
     display: 'flex',

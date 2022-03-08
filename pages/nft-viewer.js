@@ -3,7 +3,7 @@ import NFTBalance from 'components/NFTBalance';
 
 export default function Home({ dataProps, rows }) {
   return (
-    <div className="flex flex-col py-10 xl:h-screen bg-purple-600">
+    <div className="flex flex-col py-10 bg-purple-600">
       <Head>
         <title>Nft Viewer</title>
         <link rel="icon" href="/favicon.ico" />
