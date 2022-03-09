@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useMoralis, useNFTBalances } from 'react-moralis';
 import { Card, Image, Tooltip, Modal, Input, Skeleton } from 'antd';
-import { FileSearchOutlined, SendOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { getExplorer } from 'lib/networks';
-import AddressInput from './AddressInput';
 import { useVerifyMetadata } from 'hooks/useVerifyMetadata';
 import CardNft from './CardNft';
 
@@ -22,12 +19,6 @@ const styles = {
 
 function NFTBalance() {
   const { data: NFTBalances } = useNFTBalances();
-  const { Moralis, chainId } = useMoralis();
-  const [visible, setVisibility] = useState(false);
-  const [receiverToSend, setReceiver] = useState(null);
-  const [amountToSend, setAmount] = useState(null);
-  const [nftToSend, setNftToSend] = useState(null);
-  const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
 
   console.log('NFTBalances', NFTBalances);
@@ -38,8 +29,14 @@ function NFTBalance() {
           NFTBalances.result.map((nft, index) => {
             nft = verifyMetadata(nft);
             return (
-              //<h1 key={index}>hello</h1>
-              <CardNft key={index} name={nft.name} address={nft.token_address} image={nft.image} />
+              <>
+                <CardNft
+                  key={index}
+                  name={nft.name}
+                  address={nft.token_address}
+                  image={nft.image}
+                />
+              </>
             );
           })}
       </div>

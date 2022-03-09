@@ -1,4 +1,4 @@
-import { Table, Tag } from 'antd';
+import { Skeleton, Table, Tag } from 'antd';
 import 'antd/dist/antd.css';
 import calc from '../lib/calc';
 import Link from 'next/link';
@@ -107,22 +107,24 @@ const TokenTable = ({ rows }) => {
   ];
 
   return (
-    <Table
-      columns={columns}
-      rowKey="pair"
-      dataSource={rows}
-      scroll={{ x: 1500 }}
-      pagination={{
-        defaultPageSize: 10,
-        showSizeChanger: true,
-        pageSizeOptions: ['10', '20', '30'],
-      }}
-      onRow={(record) => {
-        return {
-          onClick: (event) => Router.push(`/pair/${record.pair}`),
-        };
-      }}
-    />
+    <Skeleton loading={!rows}>
+      <Table
+        columns={columns}
+        rowKey="pair"
+        dataSource={rows}
+        scroll={{ x: 1500 }}
+        pagination={{
+          defaultPageSize: 10,
+          showSizeChanger: true,
+          pageSizeOptions: ['10', '20', '30'],
+        }}
+        onRow={(record) => {
+          return {
+            onClick: (event) => Router.push(`/pair/${record.pair}`),
+          };
+        }}
+      />
+    </Skeleton>
   );
 };
 
