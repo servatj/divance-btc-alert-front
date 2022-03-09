@@ -4,6 +4,7 @@ import WalletButton from './WalletButton';
 import Link from 'next/link';
 import { useMoralis } from 'react-moralis';
 import Image from 'next/image';
+import Chains from 'components/Chains';
 
 const Nav = () => {
   const {
@@ -91,6 +92,7 @@ const Nav = () => {
                   ) : (
                     ''
                   )}
+                  <Chains />
                   <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
                 </div>
               </div>
