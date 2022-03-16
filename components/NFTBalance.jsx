@@ -23,8 +23,14 @@ function NFTBalance() {
 
   console.log('NFTBalances', NFTBalances);
   return (
-    <div style={{ padding: '15px', maxWidth: '1030px', width: '100%' }}>
-      <div style={styles.NFTs}>
+    <div className="flex flex-col">
+      <div className="flex align-center justify-center p-5">
+        <h2 className="font-bangers text-3xl text-white p-2 border-4 bg-black">
+          Total Number of NFTs{' '}
+          <span className="text-pink-600 text-4xl">{NFTBalances?.result.length}</span>
+        </h2>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-2 xl:grid-cols-4 xl:gap-4 py-2">
         {NFTBalances?.result &&
           NFTBalances.result.map((nft, index) => {
             nft = verifyMetadata(nft);

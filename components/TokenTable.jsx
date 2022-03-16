@@ -114,7 +114,7 @@ const TokenTable = ({ rows }) => {
         dataSource={rows}
         scroll={{ x: 1500 }}
         pagination={{
-          defaultPageSize: 10,
+          defaultPageSize: 100,
           showSizeChanger: true,
           pageSizeOptions: ['10', '20', '30'],
         }}

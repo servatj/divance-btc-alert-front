@@ -21,9 +21,7 @@ export default function Home({ dataProps, rows }) {
           </h1>
         </div>
         <div className="flex justify-center align-center">
-          <div className="">
-            <NFTBalance />
-          </div>
+          <NFTBalance />
         </div>
       </div>
     </div>
