@@ -17,7 +17,7 @@ export default function Footer() {
           <Image alt="twitter" width={'40px'} height={'40px'} src="/twitter.png" />
         </a>
         <a
-          href="https://discord.gg/AwrM7xYkvF"
+          href="https://discord.gg/fXP5juJqQa"
           className="px-2 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
         >
           <Image alt="discord" width={'40px'} height={'40px'} src="/discord-logo.png" />
