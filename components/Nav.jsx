@@ -1,44 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
-import WalletButton from './WalletButton';
 import Link from 'next/link';
-import { useMoralis } from 'react-moralis';
 import Image from 'next/image';
-import Chains from 'components/Chains';
 
 const Nav = () => {
-  const {
-    authenticate,
-    isAuthenticated,
-    account,
-    logout,
-    isWeb3Enabled,
-    enableWeb3,
-    isWeb3EnableLoading,
-  } = useMoralis();
-
   const [isOpen, setIsOpen] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
-
-  useEffect(() => {
-    const connectorId = window.localStorage.getItem('connectorId');
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
-      enableWeb3({ provider: connectorId });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated, isWeb3Enabled]);
-
-  async function connectLogic() {
-    try {
-      if (isAuthenticated) {
-        logout();
-      } else {
-        console.log('Ativate');
-        await authenticate();
-      }
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
 
   return (
     <div>
@@ -64,16 +31,6 @@ const Nav = () => {
                       🪙 Tokens Db
                     </a>
                   </Link>
-                  <Link href="/portfolio">
-                    <a className=" hover:bg-gray-700 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                      🚀 Portfolio
-                    </a>
-                  </Link>
-                  <Link href="/nft-viewer">
-                    <a className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                      🐒 NFT Viewer
-                    </a>
-                  </Link>
                   <Link href="/blog">
                     <a className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                       🗒️ Blog
@@ -84,16 +41,6 @@ const Nav = () => {
                       📅 Calendar
                     </a>
                   </Link>
-                  {account ? (
-                    <p className="text-purple-600">{` 🗒️  ${account.substring(
-                      0,
-                      6
-                    )}...${account.substring(account.length - 4)} `}</p>
-                  ) : (
-                    ''
-                  )}
-                  <Chains />
-                  <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
                 </div>
               </div>
             </div>
@@ -161,16 +108,6 @@ const Nav = () => {
                     🪙 Tokens Db
                   </a>
                 </Link>
-                <Link href="/portfolio">
-                  <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    🚀 Portfolio
-                  </a>
-                </Link>
-                <Link href="/nft-viewer">
-                  <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    🐒 NFT Viewer
-                  </a>
-                </Link>
                 <Link href="/blog">
                   <a className="text-black hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                     🗒️ Blog
@@ -181,7 +118,6 @@ const Nav = () => {
                     📅 Calendar
                   </a>
                 </Link>
-                <WalletButton connectLogic={connectLogic} connected={isAuthenticated} />
               </div>
             </div>
           )}

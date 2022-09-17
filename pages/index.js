@@ -1,19 +1,8 @@
-import { useEffect } from 'react';
-import { useMoralis } from 'react-moralis';
 import Head from 'next/head';
 import Search from '../components/Search';
 import TokenTable from 'components/TokenTable';
 
 export default function Home({ dataProps, rows }) {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
-
-  useEffect(() => {
-    const connectorId = window.localStorage.getItem('connectorId');
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
-      enableWeb3({ provider: connectorId });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated, isWeb3Enabled]);
-
   return (
     <div className="flex flex-col py-10 bg-purple-600">
       <Head>
