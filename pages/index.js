@@ -4,24 +4,12 @@ import TokenTable from 'components/TokenTable';
 
 export default function Home({ dataProps, rows }) {
   return (
-    <div className="flex flex-col py-10 bg-purple-600">
+    <div className="flex flex-col py-10 bg-black">
       <Head>
         <title>ATH Alert</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center justify-center">
-        <div>
-          <h1 className="font-bangers text-3xl text-white">Welcome to Divance </h1>
-          <div className="grid gap-4 xl:grid-cols-4 ">
-            <p className="font-bangers text-2xl text-white">🟣 Crypto Community 🟣</p>
-          </div>
-
-          <div className="px-4 py-6 xl:px-0 border-red-200 border-t-2 border-b-2">
-            Crypto News --&gt; Coming Soon
-          </div>
-        </div>
-      </div>
 
       <div className="flex flex-col items-center justify-center">
         <h1 className="font-bangers text-6xl p-10 text-white font-10xl">

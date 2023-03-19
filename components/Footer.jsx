@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <div className="relative py-14">
+    <div className="relative py-14 bg-purple-600">
       <div className="flex items-center justify-center space-x-3">
         <a
           href="https://www.instagram.com/divance_community/"

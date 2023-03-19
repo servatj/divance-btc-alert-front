@@ -22,11 +22,9 @@ const TokenTable = ({ rows }) => {
               src={`/${record.logo_url}.png`}
               className="px-4 h-8"
             />
-            <Link href={`/pair/${text}`}>
-              <a className="hover:bg-gray-700 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                {text}
-              </a>
-            </Link>
+            <div className="hover:bg-gray-700 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              {text}
+            </div>
           </div>
         );
       },
@@ -117,11 +115,6 @@ const TokenTable = ({ rows }) => {
           defaultPageSize: 100,
           showSizeChanger: true,
           pageSizeOptions: ['10', '20', '30'],
-        }}
-        onRow={(record) => {
-          return {
-            onClick: (event) => Router.push(`/pair/${record.pair}`),
-          };
         }}
       />
     </Skeleton>
